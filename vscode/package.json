@@ -1,0 +1,40 @@
+{
+  "name": "claude-engineer",
+  "displayName": "Claude Engineer",
+  "description": "An advanced interactive command-line interface (CLI) that harnesses the power of Anthropic's Claude 3 and Claude 3.5 models to assist with a wide range of software development tasks.",
+  "version": "0.1.0",
+  "publisher": "doriandarko",
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.voiceCommandPalette"
+  ],
+  "main": "./extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.voiceCommandPalette",
+        "title": "Voice Command Palette"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -w -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.3",
+    "vscode": "^1.1.37",
+    "@types/node": "^14.14.37",
+    "@types/vscode": "^1.60.0"
+  },
+  "dependencies": {
+    "@google-cloud/speech": "^4.0.0"
+  }
+}

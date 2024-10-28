@@ -32,6 +32,7 @@ from rich.progress import Progress, SpinnerColumn, TextColumn, BarColumn
 import subprocess
 import shutil
 from typing import AsyncIterable
+import vscode
 
 # Configure logging
 logging.basicConfig(level=logging.ERROR, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -1608,13 +1609,13 @@ async def execute_tool(tool_name: str, tool_input: Dict[str, Any]) -> Dict[str, 
                     result = "Error: 'files' must be a dictionary or a list of dictionaries."
                     is_error = True
 
-                if not is_error:
-                    # Validate the structure of 'files'
-                    try:
-                        files = validate_files_structure(files)
-                    except ValueError as ve:
-                        result = f"Error: {str(ve)}"
-                        is_error = True
+            if not is_error:
+                # Validate the structure of 'files'
+                try:
+                    files = validate_files_structure(files)
+                except ValueError as ve:
+                    result = f"Error: {str(ve)}"
+                    is_error = True
 
             if not is_error:
                 result, console_output = await edit_and_apply_multiple(files, tool_input["project_context"], is_automode=automode)
